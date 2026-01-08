@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- House/Home shape representing family -->
+  <path d="M50 10 L90 45 L90 90 L10 90 L10 45 Z" fill="url(#grad)" stroke="none"/>
+  <!-- Roof accent -->
+  <path d="M50 10 L90 45 L80 45 L50 20 L20 45 L10 45 Z" fill="#1e40af" opacity="0.3"/>
+  <!-- Door -->
+  <rect x="40" y="55" width="20" height="35" rx="2" fill="#ffffff"/>
+  <!-- Window left -->
+  <rect x="20" y="50" width="15" height="15" rx="2" fill="#ffffff"/>
+  <!-- Window right -->
+  <rect x="65" y="50" width="15" height="15" rx="2" fill="#ffffff"/>
+  <!-- Heart in center (family love) -->
+  <path d="M50 40 C45 35, 38 38, 38 43 C38 50, 50 55, 50 55 C50 55, 62 50, 62 43 C62 38, 55 35, 50 40" fill="#ef4444"/>
+</svg>

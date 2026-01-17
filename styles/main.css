@@ -627,6 +627,34 @@ body {
     font-size: 0.875rem;
 }
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.footer-label {
+    color: var(--color-text-muted);
+}
+
+.footer-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
 /* ==========================================
    Responsive Adjustments
    ========================================== */

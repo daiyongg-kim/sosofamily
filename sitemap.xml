@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sosofamily.ca/</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,30 +10,55 @@
     <loc>https://sosofamily.ca/apps/voicenote+/legal/privacy-policy.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sosofamily.ca/apps/voicenote+/legal/terms-of-service.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sosofamily.ca/apps/fitnesslog/legal/privacy-policy.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/apps/snaptip/legal/privacy-policy.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sosofamily.ca/apps/qrra/legal/privacy-policy.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sosofamily.ca/apps/qrra/legal/terms-of-service.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/apps/scanory/legal/privacy-policy.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://sosofamily.ca/blog/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/blog/voicenote-free-meeting-transcription-iphone/</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

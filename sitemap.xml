@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sosofamily.ca/</loc>
-    <lastmod>2026-03-13</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -51,9 +51,27 @@
 
   <url>
     <loc>https://sosofamily.ca/blog/</loc>
-    <lastmod>2026-03-13</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/blog/best-free-voice-memo-app-iphone/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/blog/how-to-transcribe-interview-iphone-free/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/blog/voicenote-vs-otter-ai-iphone/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sosofamily.ca/blog/best-free-qr-code-scanner-generator-iphone/</loc>

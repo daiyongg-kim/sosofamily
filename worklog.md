@@ -2,6 +2,10 @@
 
 요청 내역과 결과 기록. 최신 항목이 맨 위. 규칙은 CLAUDE.md "Worklog 규칙" 참조.
 
+## 2026-06-21 — 블로그 글 빌드: "What to Eat Today" (whattoeat.day)
+- **요청**: 블로그에 whattoeat.day 소개 글(캡처 포함).
+- **결과**: `blog/what-to-eat-today-free-recipe-website/` 신규 생성(소스는 MarketingTeam content/blog). 캡처 3장 `assets/blog/whattoeat/`. 빌드로 전 글 dateModified·blog/index·sitemap 갱신됨(정상 동작). 로컬 렌더 검증 완료.
+
 ## 2026-06-21 — Family Sites에 whattoeat.day 추가
 - **요청**: sosofamily.ca에 패밀리 사이트로 whattoeat.day 추가.
 - **결과**: index.html "Family Sites" 목록(The Daily Utils 옆)에 `What to Eat Today` 링크 추가 — `https://whattoeat.day/?utm_source=sosofamily&utm_medium=cross-promo&utm_campaign=footer` (사이트간 크로스프로모 UTM 규약 적용). 앱 JSON-LD(iOS 앱 전용)엔 미추가 — 웹 속성이라 thedailyutils와 동일하게 링크 목록에만.

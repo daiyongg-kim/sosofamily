@@ -6,9 +6,9 @@ SoSo Family iOS 앱 패밀리 + 무료 웹 유틸리티의 마케팅/블로그 �
 ## 작업 전 동기화 규칙 (2026-06-21 입고)
 
 이 repo의 **코드/콘텐츠를 수정하기 전에 반드시 최신화**한다:
-- 작업 시작 시 `git pull --rebase origin main`.
+- 작업 시작 시 `git pull origin main`.
 - 이유: 원격이 자동배포/자동커밋(GitHub Pages·Vercel·구글리뷰 자동갱신 등)으로 앞서 있을 수 있어, 먼저 당기지 않으면 push가 non-fast-forward로 거부됨.
-- 충돌 시 rebase로 우리 변경을 원격 위에 올린다.
+- 충돌 시 머지로 정리한다.
 
 ## Worklog 규칙 (2026-06-21 입고)
 

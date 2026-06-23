@@ -2,6 +2,10 @@
 
 요청 내역과 결과 기록. 최신 항목이 맨 위. 규칙은 CLAUDE.md "Worklog 규칙" 참조.
 
+## 2026-06-23 — Our Apps에 ReceiptZero 추가
+- **요청**: App Store Connect에 새 앱(id 6777239776) 추가했으니 웹사이트에도 추가.
+- **결과**: 앱 = ReceiptZero: Receipt Scanner (Finance). index.html "Our Apps" 그리드에 Scanory 다음 카드 추가 + JSON-LD SoftwareApplication 항목 추가(FinanceApplication, 무료, url https://apps.apple.com/app/id6777239776). 아이콘 `assets/app-icons/receiptzero.png`(iTunes lookup 512px) 다운로드.
+
 ## 2026-06-21 — 블로그 글 빌드: "What to Eat Today" (whattoeat.day)
 - **요청**: 블로그에 whattoeat.day 소개 글(캡처 포함).
 - **결과**: `blog/what-to-eat-today-free-recipe-website/` 신규 생성(소스는 MarketingTeam content/blog). 캡처 3장 `assets/blog/whattoeat/`. 빌드로 전 글 dateModified·blog/index·sitemap 갱신됨(정상 동작). 로컬 렌더 검증 완료.

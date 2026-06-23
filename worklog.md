@@ -4,7 +4,7 @@
 
 ## 2026-06-23 — ReceiptZero 세금 영수증 블로그 글 배포
 - **요청**: ReceiptZero 블로그 진행(소스는 MarketingTeam, 배포는 여기).
-- **결과**: MarketingTeam `build-blog.js` 산출물 반영 — 신규 글 `blog/how-to-organize-receipts-for-taxes-iphone/`("How to Organize Receipts for Taxes on iPhone", target "how to organize receipts for taxes"). 본문 앱링크 `ct=blog-receipt`, 크로스프로모(SnapTip·Scanory·VoiceNote·Qrra)·FAQ·feature 박스 포함. blog/index.html(16글)·sitemap.xml 갱신. 빌드 특성상 전 글 dateModified 갱신되어 기존 글 HTML도 diff. GitHub Pages 자동 배포.
+- **결과**: MarketingTeam `build-blog.js` 산출물 반영 — 신규 글 `blog/how-to-organize-receipts-for-taxes-iphone/`("How to Organize Receipts for Taxes on iPhone", target "how to organize receipts for taxes"). 본문 앱링크 `ct=blog-receipt`, 크로스프로모(SnapTip·Scanory·VoiceNote·Qrra)·FAQ·feature 박스 포함. App Store 스크린샷 3장(`assets/blog/receiptzero/` Dashboard·Triage·Export) 본문 삽입. blog/index.html(16글)·sitemap.xml 갱신. 빌드 특성상 전 글 dateModified 갱신되어 기존 글 HTML도 diff. GitHub Pages 자동 배포.
 
 ## 2026-06-23 — Our Apps에 ReceiptZero 추가
 - **요청**: App Store Connect에 새 앱(id 6777239776) 추가했으니 웹사이트에도 추가.

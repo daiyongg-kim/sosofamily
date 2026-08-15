@@ -305,24 +305,45 @@ body {
     font-size: 0.875rem;
 }
 
-.app-cta {
+/* 스토어 버튼 — 앱마다 스토어가 하나일 수도, 둘일 수도 있다.
+   카드 전체를 링크로 감싸던 구조로는 둘을 넣을 수 없어 카드는 컨테이너가 되고
+   실제 링크는 여기에만 둔다. */
+.app-stores {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
     margin-top: var(--spacing-md);
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--color-border);
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 0.9375rem;
 }
 
-.cta-icon {
+.store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    color: var(--color-primary);
+    transition: all var(--transition-fast);
+}
+
+.store-btn::after {
+    content: "→";
     transition: transform var(--transition-fast);
 }
 
-.app-card:hover .cta-icon {
-    transform: translateX(4px);
+.store-btn:hover {
+    border-color: var(--color-primary-light);
+    background-color: var(--color-surface, rgba(0, 0, 0, 0.03));
+}
+
+.store-btn:hover::after {
+    transform: translateX(3px);
 }
 
 @media (max-width: 480px) {
@@ -344,7 +365,7 @@ body {
         justify-content: center;
     }
 
-    .app-cta {
+    .app-stores {
         justify-content: center;
     }
 }

@@ -2,6 +2,10 @@
 
 요청 내역과 결과 기록. 최신 항목이 맨 위. 규칙은 CLAUDE.md "Worklog 규칙" 참조.
 
+## 2026-08-17 — 블로그·Scanory 카드에 Google Play 링크 반영
+- **요청**: 블로그에 SnapTip·Scanory Play 스토어 링크 업데이트(소스는 MarketingTeam).
+- **결과**: MarketingTeam `build-blog.js` 산출물 반영 — 전 16글 푸터에 "SnapTip · Google Play"/"Scanory · Google Play" 필 추가, 본문 CTA/앱 표에 Play 링크 5편(document-scanner, split-bill, 5-free-apps, thedailyutils, what-to-eat). 빌드 특성상 전 글 dateModified·sitemap 갱신. 추가로 index.html Scanory 카드에 Google Play 버튼(`referrer=utm_source=sosofamily&utm_medium=web`, SnapTip 카드와 동일) + `iOS 16.0+ · Android 8.0+` + JSON-LD `operatingSystem: "iOS, Android"`. 브랜치 `feat/play-links-blog` → PR.
+
 ## 2026-06-23 — ReceiptZero 세금 영수증 블로그 글 배포
 - **요청**: ReceiptZero 블로그 진행(소스는 MarketingTeam, 배포는 여기).
 - **결과**: MarketingTeam `build-blog.js` 산출물 반영 — 신규 글 `blog/how-to-organize-receipts-for-taxes-iphone/`("How to Organize Receipts for Taxes on iPhone", target "how to organize receipts for taxes"). 본문 앱링크 `ct=blog-receipt`, 크로스프로모(SnapTip·Scanory·VoiceNote·Qrra)·FAQ·feature 박스 포함. App Store 스크린샷 3장(`assets/blog/receiptzero/` Dashboard·Triage·Export) 본문 삽입. blog/index.html(16글)·sitemap.xml 갱신. 빌드 특성상 전 글 dateModified 갱신되어 기존 글 HTML도 diff. GitHub Pages 자동 배포.

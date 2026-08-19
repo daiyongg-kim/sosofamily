@@ -1,3 +1,14 @@
+## 2026-08-18 — Scanory · Qrra Google Play 링크 추가
+
+- **요청**: Scanory·Qrra 안드로이드 앱을 sosofamily.ca에 업데이트.
+- **결과**: `index.html` 앱 카드 2곳에 `store-btn--play` 버튼 추가.
+  SnapTip(c2a1e23)에서 세운 멀티 스토어 패턴을 그대로 따름 —
+  `?id=<패키지>&referrer=utm_source%3Dsosofamily%26utm_medium%3Dweb`
+  (Play는 애플의 `ct`가 아니라 install referrer로 귀속되므로 UTM을 referrer에 인코딩해 전달).
+  JSON-LD의 `operatingSystem`도 `iOS` → `iOS, Android`로 갱신.
+  링크 2개 모두 HTTP 200 확인. 개별 앱 페이지는 `apps/{qrra,scanory}/legal/`만 있어 대상 아님.
+- **비고**: 이제 Play 링크 보유 앱은 SnapTip·Qrra·Scanory 3종.
+
 # Worklog — sosofamily
 
 요청 내역과 결과 기록. 최신 항목이 맨 위. 규칙은 CLAUDE.md "Worklog 규칙" 참조.

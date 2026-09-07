@@ -1,3 +1,11 @@
+## 2026-09-07 — EmailJS Gmail 연결 복구 + 월간 heartbeat 워크플로
+
+- **요청**: EmailJS "service_7y4umo7 stopped working" 경고 원인 확인 → 복구 → "일주일/한달에 한번 자동으로 이메일 보내서 안죽게" + jcafterschool.ca도 함께.
+- **결과**:
+  - 원인: Contact 폼(EmailJS Gmail, sosofamily.ca@gmail.com)의 OAuth 토큰이 6개월 미사용으로 만료(`412 Invalid grant`). 1/16 마지막 성공 → 8/18 첫 실패 → 9/6 2건 실패(Roger Waugh, ReceiptZero 날짜 형식 문의 — 본인이 3분 뒤 직접 메일 보내 답변 완료). 대시보드에서 Gmail 재연결(동의 화면 "Send email on your behalf" 체크 필수) 후 test 200 OK.
+  - `.github/workflows/emailjs-heartbeat.yml` 신규: 매월 1일 15:17 UTC + 수동 실행. sosofamily.ca·jcafterschool.ca 두 EmailJS 계정에 "[TEST EMAIL]" 1통씩 REST API로 발송, 실패 시 job 실패 → GitHub 알림. secrets `EMAILJS_PRIVATE_KEY`, `EMAILJS_PRIVATE_KEY_JC`. 각 EmailJS 계정 Security에서 non-browser API + Private Key ON 필요.
+  - 검증: 수동 실행 run 34157606966 양쪽 200 OK (c12b38d).
+
 ## 2026-08-18 — Scanory · Qrra Google Play 링크 추가
 
 - **요청**: Scanory·Qrra 안드로이드 앱을 sosofamily.ca에 업데이트.

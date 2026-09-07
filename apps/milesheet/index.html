@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milesheet — Mileage &amp; expenses for self-employed drivers</title>
+<meta name="description" content="If you drive for a living you are self-employed, and the per-kilometre rate is not yours to claim. Milesheet keeps the logbook and the receipts that back an actual-expense claim. CRA and IRS.">
+<link rel="canonical" href="https://sosofamily.ca/apps/milesheet/">
+<meta property="og:title" content="You probably don't deduct by the kilometre">
+<meta property="og:description" content="The per-kilometre rate is an employee reimbursement. Self-employed drivers claim actual costs times business use — which needs a logbook and receipts.">
+<meta property="og:url" content="https://sosofamily.ca/apps/milesheet/">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7H69BB95W8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7H69BB95W8');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+:root{
+  --primary:#2563eb; --primary-dark:#1d4ed8;
+  --bg:#f8fafc; --surface:#fff; --text:#1e293b; --muted:#64748b; --border:#e2e8f0;
+  --warn-bg:#fef3c7; --warn-text:#92400e; --warn-border:#fde68a;
+  --ok:#16a34a; --ok-bg:#dcfce7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1{font-size:clamp(30px,6vw,46px);font-weight:800}
+h2{font-size:clamp(21px,3.4vw,28px);font-weight:700}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+a{color:var(--primary)}
+
+.hero{padding:64px 0 48px;display:flex;flex-direction:column;gap:20px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;color:var(--muted)}
+.brand .dot{width:22px;height:22px;border-radius:6px;background:var(--primary)}
+.lede{font-size:19px;color:#334155}
+.lede b{color:var(--text)}
+
+section{padding:40px 0;border-top:1px solid var(--border)}
+.stack{display:flex;flex-direction:column;gap:16px}
+
+.callout{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:12px;
+  padding:18px 20px;color:var(--warn-text);font-size:15.5px}
+.callout b{font-weight:700}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px}
+
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);
+  border:1px solid var(--border);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.tw{overflow-x:auto}
+
+ul.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+ul.checks li{display:grid;grid-template-columns:22px 1fr;gap:11px;font-size:15.5px}
+ul.checks li::before{content:"";width:15px;height:15px;border-radius:50%;margin-top:5px;
+  background:var(--ok-bg);border:2px solid var(--ok)}
+
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price .amt{font-size:32px;font-weight:800;letter-spacing:-.03em}
+.price .per{color:var(--muted);font-size:15px}
+
+form{display:flex;flex-direction:column;gap:11px}
+.row{display:flex;gap:10px}
+@media(max-width:520px){.row{flex-direction:column}}
+input[type=email]{flex:1;padding:14px 15px;border:1px solid var(--border);border-radius:10px;
+  font-size:16px;font-family:inherit;background:var(--surface);color:var(--text)}
+input[type=email]:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:var(--primary)}
+button{padding:14px 22px;border:none;border-radius:10px;background:var(--primary);color:#fff;
+  font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap}
+button:hover{background:var(--primary-dark)}
+button:disabled{opacity:.6;cursor:default}
+.msg{display:none;padding:13px 15px;border-radius:10px;font-size:15px;font-weight:600}
+.msg.show{display:block}
+.msg.ok{background:var(--ok-bg);color:#166534}
+.msg.bad{background:#fee2e2;color:#991b1b}
+.fine{font-size:13.5px;color:var(--muted)}
+
+footer{padding:36px 0 72px;border-top:1px solid var(--border);margin-top:40px;
+  font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:10px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="brand"><span class="dot"></span> Milesheet · SoSo Family</div>
+  <h1>You probably don't deduct by the kilometre.</h1>
+  <p class="lede">The per-kilometre rate you keep reading about is an <b>employee reimbursement</b>.
+    If you drive for a living, you're self-employed — and you claim <b>actual vehicle costs
+    multiplied by how much of your driving was for work</b>. That needs two things most apps
+    only give you one of.</p>
+</header>
+
+<section class="stack">
+  <h2>The number that isn't yours</h2>
+  <p>Canada's rate for 2026 is 73¢ per kilometre for the first 5,000 km, then 67¢. It is widely
+    quoted, widely apped, and it is the figure an <b>employer</b> uses to reimburse an
+    <b>employee</b>. Sole proprietors — which is what you are if you drive for a platform —
+    cannot multiply their business kilometres by it.</p>
+  <div class="callout">
+    <b>What you actually claim:</b> fuel, insurance, maintenance, registration, lease or loan
+    interest and depreciation — added up, then multiplied by your business-use percentage.
+    Drive 12,380 km in a year with 8,420 of them for work and that percentage is 68%.
+  </div>
+  <p>In the United States the standard mileage rate is real and you may use it — but it is a
+    <em>choice</em>, and for drivers with high fuel, insurance and repair costs the actual-expense
+    method is often worth more. Most apps only ever show you the standard rate.</p>
+</section>
+
+<section class="stack">
+  <h2>Two halves, and you need both</h2>
+  <div class="two">
+    <div class="card">
+      <span class="tag">Half one</span>
+      <h3>A logbook proves the percentage</h3>
+      <p class="fine" style="margin-top:7px">Date, destination, purpose and distance — for business
+        <em>and</em> personal driving, because the percentage is a ratio. A missed trip doesn't lose
+        one trip; it shifts the number every expense gets multiplied by.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Half two</span>
+      <h3>Receipts prove the dollars</h3>
+      <p class="fine" style="margin-top:7px">The percentage is worth nothing without the costs it
+        applies to. Mileage apps track kilometres well and receipts badly. We came at this from the
+        receipt side first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <h2>What Milesheet will do</h2>
+  <ul class="checks">
+    <li>Record drives automatically, so the ratio is built from all of your driving rather than the trips you remembered to log.</li>
+    <li>Scan receipts on the device. Nothing is uploaded, no bank account is connected.</li>
+    <li>Work out your business-use percentage and apply it — the CRA way in Canada, and in the US show the standard rate and actual expenses side by side so you can see which is larger.</li>
+    <li>Export an audit-ready PDF and CSV: the logbook, the receipts and the arithmetic between them.</li>
+    <li>Sell you nothing else. No insurance offers, no upsells, no ads.</li>
+  </ul>
+  <p class="fine">Made by SoSo Family, who also make ReceiptZero. On-device scanning is the part we
+    already do well; the logbook is what we're adding.</p>
+</section>
+
+<section class="stack">
+  <h2>Price, before you give us your email</h2>
+  <div class="card stack">
+    <div class="price"><span class="amt">$29.99</span><span class="per">CAD per year</span></div>
+    <div class="tw"><table>
+      <tr><td>One tax year, export only</td><td class="num">$19.99</td></tr>
+      <tr><td>Annual — adds automatic drive detection</td><td class="num">$29.99</td></tr>
+      <tr><td>Lifetime</td><td class="num">$49.99</td></tr>
+    </table></div>
+    <p class="fine">Recording drives and scanning receipts is free and unlimited. Paying removes the
+      watermark from exports, and the annual plan turns on automatic detection — which can't be
+      backdated, so subscribing in April won't fill in the drives you already missed.</p>
+  </div>
+</section>
+
+<section class="stack" id="waitlist">
+  <h2>Join the waitlist</h2>
+  <p>It isn't built yet. We're finding out whether enough drivers want this before spending two
+    months on it — so a signup here is a real signal, and it's how you'll hear when it ships.</p>
+  <form id="wl" novalidate>
+    <div class="row">
+      <input type="email" id="email" name="email" placeholder="you@example.com"
+             autocomplete="email" required aria-label="Email address">
+      <button type="submit" id="btn">Join the waitlist</button>
+    </div>
+    <p class="fine">One email when it launches. Nothing else, and we don't pass it on.</p>
+  </form>
+  <div class="msg ok" id="ok">Thanks — you're on the list. We'll email you once, when it ships.</div>
+  <div class="msg bad" id="bad">That didn't send. Please try again, or email sosofamily.ca@gmail.com.</div>
+</section>
+
+<footer>
+  <p><b>This is not tax advice.</b> Rates and rules change, and your situation may differ. Milesheet
+    produces estimates and records to bring to whoever prepares your return.</p>
+  <p>Not affiliated with, endorsed by, or connected to any rideshare or delivery platform.</p>
+  <p>© 2026 SoSo Family · <a href="https://sosofamily.ca/">sosofamily.ca</a></p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  // Shares the SoSo Family EmailJS service. `to_email` is passed explicitly —
+  // confirm with a live submission where the first one actually lands.
+  var CFG = {
+    serviceId:  'service_ejg4a6t',
+    templateId: 'template_ptm8jye',
+    publicKey:  'tDrvIwbUI4F5Nr_7g',
+    toEmail:    'sosofamily.ca@gmail.com'
+  };
+  try { emailjs.init({ publicKey: CFG.publicKey }); } catch (e) { console.warn('EmailJS init:', e); }
+
+  var form = document.getElementById('wl');
+  var email = document.getElementById('email');
+  var btn = document.getElementById('btn');
+  var ok = document.getElementById('ok');
+  var bad = document.getElementById('bad');
+
+  // Where the visitor came from, so conversion can be split by source in GA4.
+  var params = new URLSearchParams(location.search);
+  var source = params.get('utm_source') || 'direct';
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    ok.classList.remove('show'); bad.classList.remove('show');
+
+    var value = (email.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { email.focus(); return; }
+
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    try {
+      await emailjs.send(CFG.serviceId, CFG.templateId, {
+        title: 'Milesheet waitlist · ' + value,
+        name: 'Milesheet waitlist',
+        email: value,
+        to_email: CFG.toEmail,
+        message: 'Milesheet waitlist signup\n\nEmail: ' + value +
+                 '\nSource: ' + source +
+                 '\nCampaign: ' + (params.get('utm_campaign') || '—') +
+                 '\nTime: ' + new Date().toISOString()
+      });
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { method: 'waitlist', app: 'milesheet', utm_source: source });
+      }
+      form.reset();
+      ok.classList.add('show');
+    } catch (err) {
+      console.error('EmailJS send failed:', err);
+      bad.classList.add('show');
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+name: EmailJS heartbeat
+
+# Google가 6개월 동안 쓰지 않은 Gmail OAuth refresh 토큰을 만료시킨다(2026-08 sosofamily 폼 장애 원인).
+# 매월 1일 각 사이트의 EmailJS Gmail 서비스로 테스트 메일 1통을 보내 토큰을 살아 있게 하고,
+# 발송이 실패하면(412 Invalid grant 등) 이 워크플로가 실패해 GitHub이 즉시 알림 메일을 보낸다.
+#
+# 준비물(각 EmailJS 계정): Account → Security → "Allow EmailJS API for non-browser applications" ON,
+# 같은 화면의 Private Key를 repo secret에 저장 (아래 secrets 참조).
+
+on:
+  schedule:
+    - cron: '17 15 1 * *'   # 매월 1일 15:17 UTC = 08:17 PT
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false   # 한 사이트가 실패해도 다른 사이트는 계속 확인
+      matrix:
+        include:
+          - site: sosofamily.ca
+            service_id: service_7y4umo7
+            template_id: template_9eyeky4
+            public_key: SDwrh_xAZJhtQ6nsv
+            to_email: sosofamily.ca@gmail.com
+            secret_name: EMAILJS_PRIVATE_KEY
+          - site: jcafterschool.ca
+            service_id: service_ejg4a6t
+            template_id: template_ptm8jye
+            public_key: tDrvIwbUI4F5Nr_7g
+            to_email: jcafterschool.ca@gmail.com
+            secret_name: EMAILJS_PRIVATE_KEY_JC
+    name: ${{ matrix.site }}
+    steps:
+      - name: Send test email via EmailJS
+        env:
+          SITE: ${{ matrix.site }}
+          SERVICE_ID: ${{ matrix.service_id }}
+          TEMPLATE_ID: ${{ matrix.template_id }}
+          PUBLIC_KEY: ${{ matrix.public_key }}
+          TO_EMAIL: ${{ matrix.to_email }}
+          PRIVATE_KEY: ${{ secrets[matrix.secret_name] }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PRIVATE_KEY" ]; then
+            echo "::error::secret ${{ matrix.secret_name }} is not set"
+            exit 1
+          fi
+
+          NOW="$(date -u '+%Y-%m-%d %H:%M UTC')"
+          NOTE="[TEST EMAIL] Monthly EmailJS heartbeat for ${SITE}. This is an automated test message sent by GitHub Actions to keep the Gmail connection alive. No action needed. Sent at ${NOW}."
+
+          # 두 사이트의 템플릿 변수를 모두 채운다 (안 쓰는 변수는 무시됨).
+          #   sosofamily: from_name / from_email / subject / message / to_email / request_date / request_time
+          #   jcafterschool: name / email / message / student / phone / grade / program / to_email / request_date
+          PAYLOAD="$(jq -n \
+            --arg service_id "$SERVICE_ID" \
+            --arg template_id "$TEMPLATE_ID" \
+            --arg user_id "$PUBLIC_KEY" \
+            --arg accessToken "$PRIVATE_KEY" \
+            --arg site "$SITE" \
+            --arg to_email "$TO_EMAIL" \
+            --arg note "$NOTE" \
+            --arg now "$NOW" \
+            '{
+              service_id: $service_id,
+              template_id: $template_id,
+              user_id: $user_id,
+              accessToken: $accessToken,
+              template_params: {
+                from_name: "EmailJS Heartbeat (TEST EMAIL)",
+                from_email: "noreply@\($site)",
+                subject: "[TEST EMAIL] EmailJS heartbeat — \($site)",
+                message: $note,
+                name: "EmailJS Heartbeat (TEST EMAIL)",
+                email: "noreply@\($site)",
+                student: "테스트 이메일 (자동 발송)",
+                phone: "-",
+                grade: "-",
+                program: "테스트 이메일 — 무시하세요",
+                to_email: $to_email,
+                request_date: $now,
+                request_time: $now
+              }
+            }')"
+
+          HTTP_CODE="$(curl -sS -o /tmp/resp.txt -w '%{http_code}' \
+            -X POST https://api.emailjs.com/api/v1.0/email/send \
+            -H 'Content-Type: application/json' \
+            --data "$PAYLOAD")"
+
+          echo "HTTP ${HTTP_CODE}: $(cat /tmp/resp.txt)"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::${SITE} EmailJS send failed (HTTP ${HTTP_CODE}): $(cat /tmp/resp.txt)"
+            exit 1
+          fi

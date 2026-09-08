@@ -1,3 +1,13 @@
+## 2026-09-07 — Milesheet 개인정보처리방침 페이지 추가
+
+- **요청**: Milesheet 제출 마무리 중, 앱과 스토어가 가리키는 개인정보처리방침 URL이 **404**로 확인됨.
+- **결과**: `apps/milesheet/legal/privacy-policy.html` 신규 작성·배포(200 확인).
+  ReceiptZero 것을 복사하지 않았다 — 그 문서는 "We do not track your location"이라고 명시하는데
+  Milesheet는 **Always 위치 + 모션 활동**을 쓰므로 그대로 두면 허위 기술이 된다.
+  위치에 별도 섹션을 두어 ①무엇을 저장하는지 ②왜 백그라운드 권한이 필요한지(운행 누락은 건수 문제가
+  아니라 **사업 사용 비율**을 움직이고, 그 비율이 모든 차량 경비에 곱해진다) ③외부 전송이 없다는 점
+  ④거부해도 앱을 계속 쓸 수 있다는 점을 적었다. 커밋 `d01abe3`.
+
 ## 2026-09-07 — EmailJS Gmail 연결 복구 + 월간 heartbeat 워크플로
 
 - **요청**: EmailJS "service_7y4umo7 stopped working" 경고 원인 확인 → 복구 → "일주일/한달에 한번 자동으로 이메일 보내서 안죽게" + jcafterschool.ca도 함께.

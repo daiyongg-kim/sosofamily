@@ -1,3 +1,8 @@
+## 2026-09-08 — Milesheet 대기자 폼을 sosofamily EmailJS 서비스로 복귀
+
+- **요청**: "오늘 보낼껀 없어?" 점검 중 발견.
+- **결과**: `apps/milesheet/index.html`의 EmailJS 설정이 **JC After School 계정**(service_ejg4a6t/template_ptm8jye/JC publicKey)을 가리키고 있었다 — 9/7 당시 sosofamily Gmail 연결이 만료돼 우회한 흔적. 주석은 "SoSo Family 서비스 공유"라고 적혀 있어 실제와 달랐음. sosofamily 서비스(service_7y4umo7/template_9eyeky4)로 되돌리고 템플릿 변수도 Contact 폼과 같은 from_name/from_email/subject/message/to_email 로 맞춤(c025a8e). 검증은 사용자가 대기자 폼 1회 제출 → sosofamily.ca@gmail.com 수신 확인 필요. 그 전에 JC 계정 Email History에 이미 들어온 대기자 신청이 있는지 확인할 것.
+
 ## 2026-09-07 — Hordeling 개인정보 처리방침 추가
 
 - **요청**: 게임 App Store 제출에 필요한 개인정보 URL

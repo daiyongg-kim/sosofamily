@@ -203,12 +203,14 @@ footer{padding:36px 0 72px;border-top:1px solid var(--border);margin-top:40px;
 
 <script>
 (function () {
-  // Shares the SoSo Family EmailJS service. `to_email` is passed explicitly —
-  // confirm with a live submission where the first one actually lands.
+  // Same EmailJS service + template as the sosofamily.ca contact form (scripts/main.js).
+  // 2026-09-07 this briefly pointed at the JC After School account because the
+  // SoSo Family Gmail connection had expired; it is reconnected and kept alive by
+  // the monthly heartbeat workflow, so the waitlist goes back to its own service.
   var CFG = {
-    serviceId:  'service_ejg4a6t',
-    templateId: 'template_ptm8jye',
-    publicKey:  'tDrvIwbUI4F5Nr_7g',
+    serviceId:  'service_7y4umo7',
+    templateId: 'template_9eyeky4',
+    publicKey:  'SDwrh_xAZJhtQ6nsv',
     toEmail:    'sosofamily.ca@gmail.com'
   };
   try { emailjs.init({ publicKey: CFG.publicKey }); } catch (e) { console.warn('EmailJS init:', e); }
@@ -234,15 +236,18 @@ footer{padding:36px 0 72px;border-top:1px solid var(--border);margin-top:40px;
     btn.disabled = true; btn.textContent = 'Sending…';
 
     try {
+      var now = new Date();
       await emailjs.send(CFG.serviceId, CFG.templateId, {
-        title: 'Milesheet waitlist · ' + value,
-        name: 'Milesheet waitlist',
-        email: value,
+        from_name: 'Milesheet waitlist',
+        from_email: value,
+        subject: 'Milesheet waitlist · ' + value,
         to_email: CFG.toEmail,
+        request_date: now.toLocaleDateString(),
+        request_time: now.toLocaleTimeString(),
         message: 'Milesheet waitlist signup\n\nEmail: ' + value +
                  '\nSource: ' + source +
                  '\nCampaign: ' + (params.get('utm_campaign') || '—') +
-                 '\nTime: ' + new Date().toISOString()
+                 '\nTime: ' + now.toISOString()
       });
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { method: 'waitlist', app: 'milesheet', utm_source: source });

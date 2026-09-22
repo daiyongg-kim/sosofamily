@@ -22,7 +22,6 @@
   gtag('js', new Date());
   gtag('config', 'G-7H69BB95W8');
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
 :root{
@@ -176,20 +175,11 @@ footer{padding:36px 0 72px;border-top:1px solid var(--border);margin-top:40px;
   </div>
 </section>
 
-<section class="stack" id="waitlist">
-  <h2>Join the waitlist</h2>
-  <p>It isn't built yet. We're finding out whether enough drivers want this before spending two
-    months on it — so a signup here is a real signal, and it's how you'll hear when it ships.</p>
-  <form id="wl" novalidate>
-    <div class="row">
-      <input type="email" id="email" name="email" placeholder="you@example.com"
-             autocomplete="email" required aria-label="Email address">
-      <button type="submit" id="btn">Join the waitlist</button>
-    </div>
-    <p class="fine">One email when it launches. Nothing else, and we don't pass it on.</p>
-  </form>
-  <div class="msg ok" id="ok">Thanks — you're on the list. We'll email you once, when it ships.</div>
-  <div class="msg bad" id="bad">That didn't send. Please try again, or email sosofamily.ca@gmail.com.</div>
+<section class="stack" id="get">
+  <h2>Get Milesheet</h2>
+  <p>It's out. Free, on the App Store — no subscription, and the logbook stays on your phone.</p>
+  <p><a class="cta" href="https://apps.apple.com/us/app/milesheet-mileage-expenses/id6809628426?ct=web-milesheet">Download on the App Store</a></p>
+  <p class="fine">Questions? <a href="mailto:sosofamily.ca@gmail.com">sosofamily.ca@gmail.com</a></p>
 </section>
 
 <footer>
@@ -201,67 +191,6 @@ footer{padding:36px 0 72px;border-top:1px solid var(--border);margin-top:40px;
 
 </div>
 
-<script>
-(function () {
-  // Same EmailJS service + template as the sosofamily.ca contact form (scripts/main.js).
-  // 2026-09-07 this briefly pointed at the JC After School account because the
-  // SoSo Family Gmail connection had expired; it is reconnected and kept alive by
-  // the monthly heartbeat workflow, so the waitlist goes back to its own service.
-  var CFG = {
-    serviceId:  'service_7y4umo7',
-    templateId: 'template_9eyeky4',
-    publicKey:  'SDwrh_xAZJhtQ6nsv',
-    toEmail:    'sosofamily.ca@gmail.com'
-  };
-  try { emailjs.init({ publicKey: CFG.publicKey }); } catch (e) { console.warn('EmailJS init:', e); }
 
-  var form = document.getElementById('wl');
-  var email = document.getElementById('email');
-  var btn = document.getElementById('btn');
-  var ok = document.getElementById('ok');
-  var bad = document.getElementById('bad');
-
-  // Where the visitor came from, so conversion can be split by source in GA4.
-  var params = new URLSearchParams(location.search);
-  var source = params.get('utm_source') || 'direct';
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    ok.classList.remove('show'); bad.classList.remove('show');
-
-    var value = (email.value || '').trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { email.focus(); return; }
-
-    var label = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Sending…';
-
-    try {
-      var now = new Date();
-      await emailjs.send(CFG.serviceId, CFG.templateId, {
-        from_name: 'Milesheet waitlist',
-        from_email: value,
-        subject: 'Milesheet waitlist · ' + value,
-        to_email: CFG.toEmail,
-        request_date: now.toLocaleDateString(),
-        request_time: now.toLocaleTimeString(),
-        message: 'Milesheet waitlist signup\n\nEmail: ' + value +
-                 '\nSource: ' + source +
-                 '\nCampaign: ' + (params.get('utm_campaign') || '—') +
-                 '\nTime: ' + now.toISOString()
-      });
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { method: 'waitlist', app: 'milesheet', utm_source: source });
-      }
-      form.reset();
-      ok.classList.add('show');
-    } catch (err) {
-      console.error('EmailJS send failed:', err);
-      bad.classList.add('show');
-    } finally {
-      btn.disabled = false; btn.textContent = label;
-    }
-  });
-})();
-</script>
 </body>
 </html>

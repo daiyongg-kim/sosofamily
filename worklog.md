@@ -1,5 +1,14 @@
 # worklog
 
+## 2026-09-21 — Milesheet 반영 (라이브인데 사이트가 "아직 안 나왔다"고 말하고 있었다)
+
+- **요청**: "milesheet 도 있는데?"
+- 🔴 **랜딩 페이지가 대기자 명단이었다.** `/apps/milesheet/` 에 *"It isn't built yet. We're finding out whether enough drivers want this…"* 라고 적혀 있었는데, **앱은 2026-09-07 에 출시돼 `READY_FOR_SALE` 이고 App Store 에서 받을 수 있다.** 수요 검증용 페이지가 출시 후에도 그대로 남아, 받을 수 있는 앱을 못 받는다고 말하고 있었다. App Store CTA 로 교체하고 EmailJS 폼·스크립트를 걷어냈다(폼이 사라지면 스크립트가 없는 요소를 참조한다).
+- **홈페이지 카드 추가** — 앱 9개. JSON-LD 도 9개. 아이콘 생성. `ct=web-milesheet`.
+- 🔴 **데이터 수집에서 빠져 있었다.** `.credentials/asc-config.json` 의 앱 목록에 Milesheet 이 없어서 **설치·매출이 전혀 안 잡히고 있었다.** 2026-08-14 에 ReceiptZero 가 같은 이유로 누락됐던 것과 같은 부류다. 추가함.
+- 🔴 **제출 전 점검에서도 빠져 있었다.** `check-store-declarations.py` 의 `SRC` 매핑에 Milesheet·Hordeling·Arrowly 셋 다 없었다 — 광고 신고 대조가 한 번도 안 돌았다는 뜻. 셋 다 추가하고 재실행: 전부 일치(Milesheet 은 광고 없음/`false`).
+- **교훈**: 새 앱을 내면 **세 곳을 같이 갱신해야 한다** — 홈페이지 카드, `asc-config.json`, `check-store-declarations.py` 의 `SRC`. 셋 다 조용히 실패한다(데이터가 0으로 보이거나 점검이 그 앱을 건너뛴다).
+
 ## 2026-09-21 — 홈페이지에 게임 2종 추가 + 전 App Store 링크에 ct 토큰
 
 - **요청**: "지금 있는 앱들 기반으로 sosofamily.ca 업데이트 하자."

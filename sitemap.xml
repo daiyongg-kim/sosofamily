@@ -55,6 +55,16 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://sosofamily.ca/apps/scanory/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sosofamily.ca/apps/fitnesslog/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://sosofamily.ca/apps/milesheet/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

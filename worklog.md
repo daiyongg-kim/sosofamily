@@ -1,5 +1,18 @@
 # worklog
 
+## 2026-09-24 — 모바일 헤더 정리 + Scanory·FitnessLog 전용 랜딩 (마케팅 진단 B01)
+
+- **요청**: 마케팅 인계 계획 P1 B01 ("모두 한방에 가자")
+- **결과**:
+  - 헤더: 390px에서 로고와 메뉴가 줄바꿈되던 문제 → `.nav` flex, `white-space:nowrap`, ≤480px에서 패딩·글자 축소와 "Family" 링크 숨김(`nav-link--secondary`, 섹션은 그대로). 블로그 헤더(3링크)에도 같이 적용
+  - `/apps/scanory/`, `/apps/fitnesslog/` 신규: 대상 사용자, 작업 흐름, 무료/유료 조건표, 실제 화면, 관련 글, CTA
+    - Scanory 조건: 무료·워터마크/페이지 제한 없음·배너 광고·IAP 없음·기기 저장·**iOS 26.2+**(현 스토어 기준)·Play 있음. 기능(가장자리 인식, 다중 페이지, A4/B5, 폴더·이름 변경·검색·공유)은 앱 소스에서 확인
+    - FitnessLog 조건: 무료·계정 불필요(동기화용 로그인은 선택)·배너+전면 광고·Profile 탭의 1회 Remove Ads·구독 없음·iOS 17.0+. 129개 운동·루틴·캘린더·월간 통계는 현 스토어 설명 기준
+    - 스크린샷: Scanory는 en-US 스토어 컷(2026-08-15), FitnessLog는 현재 스토어와 같은 시뮬레이터 컷 중 기능 화면 3장(로그인 화면과 "Video Guides" 문구 컷은 제외). 480px webp+jpg, 합계 256KB
+    - CTA ct: `web-scanory-landing`, `web-fitnesslog-landing`. Play referrer `utm_source=sosofamily&utm_medium=landing`. canonical/JSON-LD에는 ct 없음
+  - 홈 카드 Scanory·FitnessLog·Milesheet에 "Learn more" 링크 추가(기존 스토어 버튼·ct 유지), sitemap에 2개 URL 추가
+- **검증**: 로컬 http.server — 두 페이지 200, 내부 링크·이미지 전부 200, iframe 측정으로 `/`·두 랜딩 모두 390/768/1440px에서 scrollWidth = 뷰포트, 390px 헤더 nav 한 줄(34px)
+
 ## 2026-09-24 — 홍보 문구를 실제 제품 조건에 맞춤 (마케팅 진단 A01·A05)
 
 - **요청**: 인계 계획 P0 "모두 한방에"

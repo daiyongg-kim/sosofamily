@@ -1,5 +1,17 @@
 # worklog
 
+## 2026-09-24 — 홍보 문구를 실제 제품 조건에 맞춤 (마케팅 진단 A01·A05)
+
+- **요청**: 인계 계획 P0 "모두 한방에"
+- **근거(2026-09-24 실측)**: iTunes lookup(CA) 최소 OS·연령 + ASC API IAP/구독 + 앱 소스 AdMob 설정
+- **홈페이지**: "Six small tools… All free, no subscriptions" → 도구 7개+게임 2개, "무료 다운로드, 일부 광고·선택 구매, 카드에 표기"로 수정. meta/twitter description의 "All free" 제거
+  - 9개 카드에 💳 과금 표기 추가(광고 / 1회 Remove Ads / ReceiptZero Pro 연간·평생 / Milesheet 유료 내보내기 / Hordeling Supporter Pack)
+  - 최소 OS: Scanory 16.0+ → **26.2+**(현 스토어 기준, 17.0 하향은 새 버전 승인 후), ReceiptZero·Milesheet 16.0+ → 17.0+
+  - Arrowly 설명에 11레벨부터 하트 3개·소진 시 재시작 반영
+  - JSON-LD `url`·App Store ct 링크는 변경 없음
+- **Milesheet 랜딩**: "will do"→현재형, "Price, before you give us your email"→"Price", "logbook is what we're adding" 삭제, CTA의 "no subscription" 삭제, 자동 감지가 연간+평생 플랜 포함(코드 `Entitlements.swift` 확인)으로 정정, CRA 73¢/67¢에 "provinces"(준주 77¢/71¢) 범위 명시(Finance Canada 2026-01 발표)
+- **블로그**: MarketingTeam 소스 수정 후 재빌드(5-apps 글의 "No Ads"/"no in-app purchases"/iOS 16, workout 글 "no ads", receipt 글 "completely free", 푸터 "All free")
+
 ## 2026-09-21 — Milesheet 반영 (라이브인데 사이트가 "아직 안 나왔다"고 말하고 있었다)
 
 - **요청**: "milesheet 도 있는데?"

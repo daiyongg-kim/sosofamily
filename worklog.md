@@ -1,5 +1,14 @@
 # worklog
 
+## 2026-09-26 — Tallyleaf(GLP-1 기록 앱) 출시 전 수요검증 랜딩 + 법무 초안
+
+- **요청**: GLP-1 앱 계획 M0(웹) — `apps/tallyleaf/` 대기자 랜딩, 개인정보 처리방침·이용약관 신규 작성, sitemap 등록(홈 카드는 출시 후)
+- **결과**: `apps/tallyleaf/index.html`(Scanory 틀 + Milesheet 대기자 폼 c025a8e 재사용 — EmailJS `service_7y4umo7`/`template_9eyeky4`, 이메일·국가(US/CA/UK/Other)·"I'd buy Plus" 체크, 성공 시 `generate_lead {method:waitlist, app:tallyleaf, utm_source, country, would_buy_plus}`). 폼 앞에 가격(핵심 무료 / Plus US$14.99 1회, CAD·GBP는 App Store), 의료기기 아님 고지, "개발 중" 명시, App Store 링크 없음. 브랜드명은 설명 한 줄에만 ® + Novo Nordisk·Eli Lilly 무관 고지
+  - `apps/tallyleaf/legal/privacy-policy.html`·`terms-of-service.html` 새로 작성(Qrra 스타일). 앱: 계정·서버·SDK 없음, HealthKit 체중만(기본 꺼짐), 로컬 알림, Face ID, 사용자 내보내기, Apple 결제. 웹 대기자 폼(EmailJS→Gmail)·GA4는 별도 절(`#website`). 약관: 의료기기 아님·용량 계산 없음·1회 구매·Apple EULA·BC 준거법
+  - ⚠️ **두 문서는 초안(HTML 주석에만 표기) — 앱 제출 전 변호사 검토 필수**
+  - sitemap에 3개 URL 추가
+- **검증**: 로컬 200(3페이지·sitemap), 390/768/1440 iframe scrollWidth = 뷰포트(3페이지 모두), 폼은 emailjs.send 스텁으로 파라미터·GA 이벤트·성공 메시지 확인(실제 메일 발송 안 함)
+
 ## 2026-09-25 — App Store 링크에 provider token(pt) + Qrra 글 정정 반영
 
 - **요청**: Qrra 성장 계획 검토 후 "모두 하자"

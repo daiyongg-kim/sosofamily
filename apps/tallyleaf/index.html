@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tallyleaf — Private GLP-1 shot &amp; pill log for iPhone (in development)</title>
+<meta name="description" content="A private log for semaglutide and tirzepatide shots and pills. No account, nothing collected, no subscription. In development for iPhone — join the list to hear when it launches in the US, Canada and UK.">
+<link rel="canonical" href="https://sosofamily.ca/apps/tallyleaf/">
+<meta property="og:title" content="Tallyleaf — a GLP-1 log with no account and no subscription">
+<meta property="og:description" content="Log shots and pills, injection sites, side effects and weight — all on your iPhone. In development; join the list to hear when it launches.">
+<meta property="og:url" content="https://sosofamily.ca/apps/tallyleaf/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7H69BB95W8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7H69BB95W8');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root{--primary:#15803d;--primary-dark:#166534;--bg:#f8fafc;--surface:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;
+  --ok:#16a34a;--ok-bg:#dcfce7;--note-bg:#f1f5f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{background:var(--surface);border-bottom:1px solid var(--border)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.top a{text-decoration:none;color:var(--text);font-weight:700;white-space:nowrap}
+.top nav a{color:var(--muted);font-weight:500;font-size:15px;margin-left:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1{font-size:clamp(30px,6vw,44px);font-weight:800}
+h2{font-size:clamp(21px,3.4vw,27px);font-weight:700}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+a{color:var(--primary)}
+.hero{padding:48px 0 36px;display:flex;flex-direction:column;gap:18px}
+.appline{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--muted)}
+.appline .dot{width:28px;height:28px;border-radius:8px;background:var(--primary)}
+.status{align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--primary-dark);background:var(--ok-bg);border-radius:999px;padding:4px 12px}
+.lede{font-size:19px;color:#334155}
+section{padding:36px 0;border-top:1px solid var(--border)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+.note{background:var(--note-bg);border-radius:12px;padding:16px 18px;font-size:15.5px}
+ul.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+ul.checks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px}
+ul.checks li::before{content:"";width:15px;height:15px;border-radius:50%;margin-top:5px;background:var(--ok-bg);border:2px solid var(--ok)}
+ul.plain{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15.5px}
+.terms{width:100%;border-collapse:collapse;font-size:15.5px;table-layout:fixed}
+.terms td{padding:10px 0;border-bottom:1px solid var(--border);vertical-align:top;word-break:break-word}
+.terms tr:last-child td{border-bottom:none}
+.terms td:first-child{color:var(--muted);width:38%;padding-right:12px}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price .amt{font-size:30px;font-weight:800;letter-spacing:-.03em}
+.price .per{color:var(--muted);font-size:15px}
+.fine{font-size:14px;color:var(--muted)}
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:15px;font-weight:600}
+.field{display:flex;flex-direction:column;gap:6px}
+input[type=email],select{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;background:var(--surface);color:var(--text)}
+input[type=email]:focus,select:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:var(--primary)}
+.check{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-weight:500}
+.check input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--primary)}
+button{align-self:flex-start;padding:13px 22px;border:none;border-radius:10px;background:var(--primary);color:#fff;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer}
+button:hover{background:var(--primary-dark)}
+button:disabled{opacity:.6;cursor:default}
+.msg{display:none;padding:13px 15px;border-radius:10px;font-size:15px;font-weight:600}
+.msg.show{display:block}
+.msg.ok{background:var(--ok-bg);color:#166534}
+.msg.bad{background:#fee2e2;color:#991b1b}
+footer{padding:28px 0 48px;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-direction:column;gap:10px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a href="/">&#127968; SoSo Family</a><nav><a href="/#apps">Apps</a><a href="/blog/">Blog</a></nav></div></header>
+<main class="wrap">
+<section class="hero" style="border-top:0">
+  <div class="appline"><span class="dot" aria-hidden="true"></span><span>Tallyleaf &middot; GLP-1 Shot &amp; Pill Log</span></div>
+  <span class="status">In development &middot; iPhone</span>
+  <h1>Keep track of your GLP&#8209;1 doses without handing over your health data.</h1>
+  <p class="lede">Tallyleaf is a simple log for weekly shots and daily pills. <b>No account, nothing collected, no subscription.</b> Everything you enter stays on your iPhone.</p>
+  <p><a href="#waitlist">Join the list to hear when it launches &darr;</a></p>
+</section>
+
+<section class="stack">
+  <h2>Why another tracker</h2>
+  <p>There are plenty of GLP-1 apps. Many ask you to sign up and keep your entries on their servers, and several list &ldquo;Data Used to Track You&rdquo; on their App Store privacy label. The ones that don't usually want a monthly subscription.</p>
+  <p>What you log here is personal: the medicine you take, your dose, your weight, how you felt. We think it belongs on your phone and nowhere else. So Tallyleaf has no account to create, no server to send data to, and no ads or analytics inside the app.</p>
+</section>
+
+<section class="stack">
+  <h2>What it will do</h2>
+  <ul class="checks">
+    <li>Weekly shot and daily pill schedules, with reminders on your phone. By default the lock-screen reminder doesn't name the medicine.</li>
+    <li>A dose log where you type the dose exactly as it's written on your prescription &mdash; mg, units, or both. The app never converts between them.</li>
+    <li>Log a dose you forgot to record, on the day you actually took it.</li>
+    <li>Injection-site rotation, so you can see where you went last time.</li>
+    <li>Side effects, including a one-tap &ldquo;none today&rdquo;.</li>
+    <li>A weight chart with markers where your dose changed. Optional two-way sync with Apple Health (off until you turn it on).</li>
+    <li>Switch history &mdash; the date you moved from one product to another, for example from a brand-name pen to a Canadian generic.</li>
+    <li>Backup and export as JSON or CSV, so moving to a new phone doesn't mean losing your history.</li>
+    <li>Face ID lock.</li>
+  </ul>
+  <p class="fine">Works with semaglutide and tirzepatide medicines, including brand-name (such as Ozempic&reg;, Wegovy&reg;, Rybelsus&reg;, Mounjaro&reg; and Zepbound&reg;), Canadian generic and compounded forms. You can also add a medicine that isn't on the list. Not affiliated with Novo Nordisk or Eli Lilly.</p>
+</section>
+
+<section class="stack">
+  <h2>What it won't do</h2>
+  <ul class="plain">
+    <li>It won't calculate, suggest or adjust a dose, and it won't tell you what to do about a missed one.</li>
+    <li>It won't convert mg to units or the other way round. Those numbers come from your prescription.</li>
+    <li>It won't sync to the cloud. That's the trade-off for having no account: you move your data with a backup file.</li>
+  </ul>
+  <div class="note"><b>Tallyleaf is a personal log, not a medical device.</b> It doesn't calculate or recommend doses. Talk to your doctor or pharmacist about your treatment.</div>
+</section>
+
+<section class="stack" id="price">
+  <h2>Price</h2>
+  <div class="card stack">
+    <p><b>Core features free.</b> Everything in the list above is free, with no time limit.</p>
+    <div class="price"><span class="amt">US$14.99 once</span><span class="per">Tallyleaf Plus &mdash; no subscription</span></div>
+    <table class="terms">
+      <tr><td>Plus adds</td><td>A PDF report to bring to appointments, more than one active medicine, cost charts, and themes</td></tr>
+      <tr><td>Canada &amp; UK</td><td>Prices in CAD and GBP are set by the App Store and will show in the app</td></tr>
+      <tr><td>Ads</td><td>None</td></tr>
+      <tr><td>Account</td><td>None</td></tr>
+    </table>
+    <p class="fine">This is our planned price. If it changes before launch, we'll say so here.</p>
+  </div>
+</section>
+
+<section class="stack" id="waitlist">
+  <h2>Join the list</h2>
+  <p><b>In development &mdash; join the list to hear when it launches (US, Canada, UK).</b> We're checking whether enough people want this before we finish it, so a signup here is a real signal.</p>
+  <form id="wl" class="card" novalidate>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="country">Country</label>
+      <select id="country" name="country" required>
+        <option value="" selected disabled>Choose one</option>
+        <option value="US">United States</option>
+        <option value="CA">Canada</option>
+        <option value="UK">United Kingdom</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <label class="check"><input type="checkbox" id="plus" name="plus"><span>I'd buy Plus for US$14.99 once (optional &mdash; it helps us decide)</span></label>
+    <button type="submit" id="btn">Join the list</button>
+    <p class="fine">We'll email you when it launches. We only ask for your email, country and the checkbox above &mdash; no health information. We don't share it or sell it. See the <a href="legal/privacy-policy.html#website">privacy policy</a>.</p>
+  </form>
+  <div class="msg ok" id="ok" role="status">Thanks &mdash; you're on the list. We'll email you when Tallyleaf launches.</div>
+  <div class="msg bad" id="bad" role="alert">That didn't send. Please try again, or email sosofamily.ca@gmail.com.</div>
+</section>
+</main>
+<footer><div class="wrap">
+  <p>Tallyleaf is a personal log, not a medical device, and doesn't provide medical advice.</p>
+  <p>Ozempic&reg;, Wegovy&reg; and Rybelsus&reg; are trademarks of Novo Nordisk A/S. Mounjaro&reg; and Zepbound&reg; are trademarks of Eli Lilly and Company. Tallyleaf is not affiliated with or endorsed by either company.</p>
+  <p>Made by <a href="/">SoSo Family</a> in Vancouver &mdash; we're here to help. Questions? sosofamily.ca@gmail.com &middot; <a href="legal/privacy-policy.html">Privacy policy</a> &middot; <a href="legal/terms-of-service.html">Terms</a></p>
+</div></footer>
+
+<script>
+(function () {
+  // Same EmailJS service + template as the sosofamily.ca contact form (scripts/main.js)
+  // and the Milesheet pre-launch waitlist (commit c025a8e).
+  var CFG = {
+    serviceId:  'service_7y4umo7',
+    templateId: 'template_9eyeky4',
+    publicKey:  'SDwrh_xAZJhtQ6nsv',
+    toEmail:    'sosofamily.ca@gmail.com'
+  };
+  try { emailjs.init({ publicKey: CFG.publicKey }); } catch (e) { console.warn('EmailJS init:', e); }
+
+  var form = document.getElementById('wl');
+  var email = document.getElementById('email');
+  var country = document.getElementById('country');
+  var plus = document.getElementById('plus');
+  var btn = document.getElementById('btn');
+  var ok = document.getElementById('ok');
+  var bad = document.getElementById('bad');
+
+  // Where the visitor came from, so conversion can be split by source in GA4.
+  var params = new URLSearchParams(location.search);
+  var source = params.get('utm_source') || 'direct';
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    ok.classList.remove('show'); bad.classList.remove('show');
+
+    var value = (email.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { email.focus(); return; }
+    if (!country.value) { country.focus(); return; }
+    var wouldBuy = plus.checked ? 'yes' : 'no';
+
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    try {
+      var now = new Date();
+      await emailjs.send(CFG.serviceId, CFG.templateId, {
+        from_name: 'Tallyleaf waitlist',
+        from_email: value,
+        subject: 'Tallyleaf waitlist · ' + country.value + ' · Plus ' + wouldBuy,
+        to_email: CFG.toEmail,
+        request_date: now.toLocaleDateString(),
+        request_time: now.toLocaleTimeString(),
+        message: 'Tallyleaf waitlist signup\n\nEmail: ' + value +
+                 '\nCountry: ' + country.value +
+                 '\nWould buy Plus: ' + wouldBuy +
+                 '\nSource: ' + source +
+                 '\nMedium: ' + (params.get('utm_medium') || '—') +
+                 '\nCampaign: ' + (params.get('utm_campaign') || '—') +
+                 '\nTime: ' + now.toISOString()
+      });
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { method: 'waitlist', app: 'tallyleaf', utm_source: source, country: country.value, would_buy_plus: wouldBuy });
+      }
+      form.reset();
+      form.style.display = 'none';
+      ok.classList.add('show');
+    } catch (err) {
+      console.error('EmailJS send failed:', err);
+      bad.classList.add('show');
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
+  });
+})();
+</script>
+</body>
+</html>

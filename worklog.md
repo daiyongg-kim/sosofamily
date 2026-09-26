@@ -1,5 +1,10 @@
 # worklog
 
+## 2026-09-25 — App Store 링크에 provider token(pt) + Qrra 글 정정 반영
+
+- **요청**: Qrra 성장 계획 검토 후 "모두 하자"
+- **결과**: 홈 9·랜딩(scanory·fitnesslog·qrra·milesheet) App Store 링크를 `?pt=128397788&ct=…&mt=8`로(JSON-LD url 제외). 블로그 재빌드 — 전 글 CTA·푸터 pt 반영, Qrra 관련 글의 색상·로고·무제한·수정 가능 주장 삭제(MarketingTeam 소스)
+
 ## 2026-09-25 — Qrra 전용 랜딩 `/apps/qrra/` 신설
 
 - **요청**: Qrra 다운로드 성장 계획 검토 후 "모두 하자" — `/apps/qrra/`가 404라 웹에서 보낼 곳이 없었음

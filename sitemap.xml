@@ -60,6 +60,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sosofamily.ca/apps/qrra/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://sosofamily.ca/apps/fitnesslog/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

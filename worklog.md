@@ -1,5 +1,16 @@
 # worklog
 
+## 2026-09-25 — Qrra 전용 랜딩 `/apps/qrra/` 신설
+
+- **요청**: Qrra 다운로드 성장 계획 검토 후 "모두 하자" — `/apps/qrra/`가 404라 웹에서 보낼 곳이 없었음
+- **결과**: `apps/qrra/index.html`(Scanory 랜딩과 같은 구조), `assets/apps/qrra/{create,history,detail}.{webp,jpg}`(Qrra repo `screenshots/raw` 실제 화면, 477×1038), 홈 Qrra 카드에 Learn more, sitemap 추가
+  - 기능은 소스로 확인한 것만: 스캔(QR + EAN·UPC·Code 128/39/93·Codabar·ITF·Data Matrix·PDF417·Aztec, iPhone은 사진에서도), 생성 13종(전화·URL·이메일·SMS·연락처·텍스트·Wi‑Fi·앱스토어 링크·Facebook·Instagram·X·WhatsApp·YouTube, iOS·Android 동일), 기록·검색·즐겨찾기, 공유·이미지 저장, PDF 내보내기(iPhone). **색상·로고 꾸미기는 언급 안 함**(기능 없음)
+  - 과금: iPhone은 처음 5회(스캔·생성 합산, 평생)는 광고 없음 → 이후 2회마다 전면 광고(`AdManager.shouldShowAd`), 1회성 Remove Ads. ⚠️ iOS `SubscriptionManager`의 하루 5회 한도·보상형 페이월은 **정의만 있고 호출되지 않음** → 랜딩에 쓰지 않음. Android는 하루 한도(3 + 보너스)가 연결돼 있어 정책이 다름 → "Ad-supported"만 표기
+  - 요구 사양: iOS 17.0+, Android 8.0+(minSdk 26), Android 앱은 영어 UI
+  - 기대 관리: 정적 QR은 인쇄 후 수정·스캔 통계 불가
+  - CTA: `ct=web-qrra-landing`(pt는 상위 작업에서 일괄 추가 예정), Play referrer `utm_medium=landing`, TDU 생성기 UTM 크로스프로모
+- **검증**: 로컬 200(페이지·에셋·legal·관련 글 2편·sitemap), 390/768/1440px scrollWidth = 뷰포트(랜딩·홈)
+
 ## 2026-09-24 — 모바일 헤더 정리 + Scanory·FitnessLog 전용 랜딩 (마케팅 진단 B01)
 
 - **요청**: 마케팅 인계 계획 P1 B01 ("모두 한방에 가자")

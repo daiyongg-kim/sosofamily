@@ -1,3 +1,19 @@
+## 2026-09-27 — FitnessLog 계정 삭제 페이지 신설 (앱이 약속한 404 URL)
+
+- **요청**: (MarketingTeam 세션) Play 데이터 보안 선언을 채우다 **계정 삭제 URL 이 필수**인데 없었다.
+- **발견**: 앱이 이미 이 주소를 안내하고 있었는데 **404** 였다 —
+  `strings.xml` / `values-ko` 의 `profile_delete_account_failed`:
+  "…visit **sosofamily.ca/apps/fitnesslog/account-deletion.html** or email sosofamily.ca@gmail.com."
+  즉 서버 삭제가 실패한 사용자에게 없는 페이지를 안내하고 있었다.
+- **결과**: `apps/fitnesslog/account-deletion.html` 신설(방침 페이지와 같은 스타일·GA 태그).
+  Play 가 요구하는 3가지를 담았다 — ① 스토어 표기 앱·개발자 이름 ② 삭제 절차(앱 내 Profile →
+  Delete Account, 앱이 없으면 가입한 구글 주소로 메일) ③ 삭제 항목/보관 항목과 기간.
+- **내용은 코드 실측 기준**: 로그인은 선택이라 동기화 안 한 기록은 서버에 없다(삭제 대상 아님),
+  삭제 대상은 계정(이메일·이름·user_id)과 동기화된 workouts/sets/exercises/routines/settings,
+  Remove Ads 영수증은 Play 소관이라 삭제·환불되지 않는다.
+- ⚠️ **백업 보관 "30일 이내"는 내가 보수적으로 적은 값**이다(Supabase 기본 백업 주기보다 넉넉).
+  실제 계약과 다르면 이 문장을 고칠 것.
+
 ## 2026-09-27 — VoiceNote+ 방침: 안드로이드 절
 
 - **요청**: iOS 앱 안드로이드 포팅 1단계(VoiceNote+ 안드로이드 = 무계정·온디바이스 Whisper·AdMob)

@@ -113,15 +113,18 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="last-updated"><strong>Last Updated:</strong> September 7, 2026</p>
+        <p class="last-updated"><strong>Last Updated:</strong> September 27, 2026</p>
 
         <h2>Introduction</h2>
         <p>Milesheet ("App") is a mileage logbook and vehicle-expense recorder for self-employed drivers, developed by Soso Family in Vancouver, Canada ("we," "our," or "us").</p>
         <p>Milesheet records where you drive. That is more sensitive than most of what an app asks for, so this policy is specific about what is recorded, where it is kept, and who can reach it. If you do not agree with this policy, please do not use the App.</p>
 
         <div class="highlight">
-            <p style="margin-bottom:0;"><strong>The short version:</strong> your drives, locations, and receipts stay <strong>on your device</strong> — and, only if you turn on iCloud Backup, in <strong>your own private iCloud account</strong>. We operate no servers that receive your data, so we never see your routes or your records. There are <strong>no ads</strong>, <strong>no third-party analytics or tracking</strong> in the App, and <strong>no insurance or financial offers</strong>.</p>
+            <p><strong>The short version (iPhone):</strong> your drives, locations, and receipts stay <strong>on your device</strong> — and, only if you turn on iCloud Backup, in <strong>your own private iCloud account</strong>. We operate no servers that receive your data, so we never see your routes or your records. There are <strong>no ads</strong>, <strong>no third-party analytics or tracking</strong> in the App, and <strong>no insurance or financial offers</strong>.</p>
+            <p style="margin-bottom:0;"><strong>On Android:</strong> your drives, locations, and receipts still stay on your phone and are never uploaded, but the free version shows Google ads, which means Google's ad SDK receives some device data. Any purchase removes the ads. See <a href="#android">Milesheet on Android</a>.</p>
         </div>
+
+        <p>The sections below describe the iPhone app. Where the Android app works differently, the <a href="#android">Android section</a> explains how.</p>
 
         <h2>Location Data</h2>
         <p>This is the part worth reading closely.</p>
@@ -155,8 +158,8 @@
             <li>We do not receive your location, routes, trips, receipts, or records — we operate no servers that receive them.</li>
             <li>We do not collect personal identification information.</li>
             <li>We do not access your contacts or messages.</li>
-            <li>We do not include advertising or advertising identifiers.</li>
-            <li>We do not use third-party analytics or tracking SDKs inside the App.</li>
+            <li>The iPhone app includes no advertising and no advertising identifiers. (The Android app's free version shows ads — see <a href="#android">below</a>.)</li>
+            <li>We do not use third-party analytics or tracking SDKs inside the iPhone app.</li>
             <li>We do not sell, share, or broker your data, and we do not present insurance, lending, or other financial offers.</li>
         </ul>
 
@@ -171,7 +174,7 @@
         <p>Tax authorities generally expect mileage logs and receipts to be kept for several years after filing. The App does not automatically delete your records for this reason. Deleting them is always your decision.</p>
 
         <h2>Third-Party Services</h2>
-        <p>Milesheet embeds no advertising networks and no third-party analytics. The only third-party services involved are provided by Apple:</p>
+        <p>On iPhone, Milesheet embeds no advertising networks and no third-party analytics. The only third-party services involved are provided by Apple:</p>
         <ul>
             <li><strong>Apple iCloud (CloudKit):</strong> used only if you enable iCloud Backup, to store your records in your own private iCloud (see above).</li>
             <li><strong>Apple App Store / In-App Purchases:</strong> optional paid plans are processed by Apple. Apple handles your payment; we do not receive or store your payment details. Purchase processing is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>.</li>
@@ -189,6 +192,54 @@
 
         <h2>Data Security</h2>
         <p>Records are stored with file-level data protection on your device. Because your data lives on your device and in your own iCloud, its security also depends on your device's settings. We recommend enabling a device passcode and biometric authentication, and you may also turn on the App's built-in Face ID lock.</p>
+
+        <h2 id="android">Milesheet on Android</h2>
+        <p>The Android app keeps your drives and receipts on your phone just like the iPhone app, but a few things work differently.</p>
+
+        <h3>Location and automatic drive detection</h3>
+        <ul>
+            <li><strong>Only with Annual or Lifetime, and only if you turn it on.</strong> Automatic drive detection is part of the Annual and Lifetime plans. On the free version or a single tax-year purchase, the app does not use location at all and you add drives by hand. Permissions are asked only when you switch detection on, never at launch.</li>
+            <li><strong>Noticing a drive:</strong> the app asks Google Play services' activity recognition (the "Physical activity" permission) to tell it when your phone enters or leaves a vehicle. That signal is what starts recording, so GPS is not running the rest of the day. After your phone restarts or the app updates, the app re-registers for these signals.</li>
+            <li><strong>While you drive:</strong> recording runs as a foreground service, so Android shows a <strong>"Recording a drive"</strong> notification with the distance so far and a <strong>Stop</strong> button for as long as it runs. GPS is read about every few seconds. The drive ends automatically after 5 minutes without movement.</li>
+            <li><strong>Background location ("Allow all the time"):</strong> requested as a separate step after the basic location permission. It lets a drive that starts while the app is closed be recorded. If you keep "Only while using the app", the app still works, but drives are missed while it is closed, and the app tells you so.</li>
+            <li><strong>What is kept:</strong> only the drive's <strong>distance</strong> and its start and end times. GPS points are used on your phone to add up the distance and then discarded — the Android app does not store your route or coordinates.</li>
+            <li><strong>Where it goes:</strong> nowhere. Location is never sent to us, and it is not passed to the ad SDK.</li>
+            <li><strong>Turning it off:</strong> switch detection off in the app, or revoke location or physical activity access in your phone's Settings. If your plan lapses, detection stops and any drive being recorded is ended.</li>
+        </ul>
+
+        <h3>Receipts stay on your phone</h3>
+        <ul>
+            <li><strong>No account, no server.</strong> Trips, receipts, receipt photos, the text read from them, and your settings are kept in the app's own storage on your phone. Nothing is sent to Soso Family.</li>
+            <li><strong>Scanning:</strong> the camera is opened by Google's ML Kit document scanner (part of Google Play services), which hands the app only the cropped receipt image. The app itself does not request camera or storage permission. Importing a photo uses Android's system photo picker, which shares only the photo you choose.</li>
+            <li><strong>Text recognition (OCR):</strong> done on your phone with Google ML Kit's on-device text recognition. Receipt images and their text are not uploaded. Google's ML Kit and location services may send Google anonymous usage and performance statistics about those components themselves (not your receipts or drives).</li>
+            <li><strong>Exports:</strong> PDF and CSV files are created on your phone and go only where you send them with the share sheet.</li>
+            <li><strong>App Lock (optional):</strong> uses your phone's fingerprint, face unlock, or screen lock through Android. The app never sees your biometric data.</li>
+        </ul>
+
+        <h3>Ads in the free version</h3>
+        <p>The iPhone app has no ads. The free Android app shows ads from <strong>Google AdMob</strong>: a banner at the bottom of the screen, and now and then a full-screen ad <em>after</em> you finish something (such as saving a drive or a receipt). Ads never block a feature.</p>
+        <p>To choose and measure ads, Google's advertising SDK receives:</p>
+        <ul>
+            <li>your phone's <strong>advertising ID</strong>;</li>
+            <li>your <strong>IP address</strong>, from which Google estimates an approximate location (this is separate from, and much less precise than, the GPS used for drives, which the ad SDK never gets);</li>
+            <li><strong>device information</strong> such as model, OS version, and language;</li>
+            <li>how you <strong>interact with ads</strong> (views, taps), plus diagnostic data about ad performance.</li>
+        </ul>
+        <p>This goes to Google, not to us, and is handled under <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google's policy for partner apps</a>. Your drives, receipts, and records are never part of it.</p>
+        <ul>
+            <li><strong>Reset or delete your advertising ID:</strong> in your phone's Settings &rsaquo; Privacy &rsaquo; Ads (on some phones, Settings &rsaquo; Google &rsaquo; Ads).</li>
+            <li><strong>EEA, UK, and Switzerland:</strong> before any ad is requested, the app shows Google's consent form so you can choose how your data is used for ads. You can change your answer later from <strong>Settings &rsaquo; Ad Privacy Choices</strong> in the app, which appears wherever the law requires it.</li>
+            <li><strong>Removing ads:</strong> any purchase — a tax-year export, Annual, or Lifetime — removes all ads.</li>
+        </ul>
+
+        <h3>Purchases</h3>
+        <p>Paid plans are sold through <strong>Google Play Billing</strong>. Google processes the payment; we never see your card or payment details. The app only keeps a note on your phone of which purchases you own, so it knows which features to unlock and whether to show ads. Manage or cancel a subscription in the Google Play Store under Payments &amp; subscriptions.</p>
+
+        <h3>Backup</h3>
+        <p>There is no iCloud on Android. Instead, Android's own backup (to your Google account, if you have it turned on) includes your trips, receipt records, and app settings, but <strong>not the receipt photos</strong>. When you move to a new phone with Android's device-to-device transfer, the receipt photos are included too. You can turn Android backup off in your phone's Settings.</p>
+
+        <h3>Deleting your data</h3>
+        <p>Delete any trip or receipt in the app, or uninstall the app (or use Settings &rsaquo; Apps &rsaquo; Milesheet &rsaquo; Storage &rsaquo; Clear storage) to remove everything from your phone.</p>
 
         <h2>Children's Privacy</h2>
         <p>The App is not intended for children under 13, and we do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>

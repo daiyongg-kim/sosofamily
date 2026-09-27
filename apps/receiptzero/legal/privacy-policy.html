@@ -113,15 +113,18 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="last-updated"><strong>Last Updated:</strong> June 4, 2026</p>
+        <p class="last-updated"><strong>Last Updated:</strong> September 27, 2026</p>
 
         <h2>Introduction</h2>
         <p>Welcome to ReceiptZero ("we," "our," or "us"). ReceiptZero is a receipt scanner and tax-record organizer for freelancers and self-employed people ("App"), developed by Soso Family in Vancouver, Canada.</p>
         <p>We built ReceiptZero to be private by design. This Privacy Policy explains what information the App handles and how it is protected. Please read it carefully. If you do not agree with this policy, please do not use the App.</p>
 
         <div class="highlight">
-            <p style="margin-bottom:0;"><strong>The short version:</strong> ReceiptZero does <strong>not</strong> collect your data. Your receipts, images, and tax records stay on your device, and — only if you choose to turn on iCloud Backup — in <strong>your own private iCloud account</strong>. We show <strong>no ads</strong>, use <strong>no third-party tracking or analytics</strong> inside the App, and never see or upload your receipts.</p>
+            <p><strong>The short version (iPhone):</strong> ReceiptZero does <strong>not</strong> collect your data. Your receipts, images, and tax records stay on your device, and — only if you choose to turn on iCloud Backup — in <strong>your own private iCloud account</strong>. We show <strong>no ads</strong>, use <strong>no third-party tracking or analytics</strong> inside the App, and never see or upload your receipts.</p>
+            <p style="margin-bottom:0;"><strong>On Android:</strong> your receipts still stay on your phone and are never uploaded, but the free version shows Google ads, which means Google's ad SDK receives some device data. Paying for Pro removes the ads. See <a href="#android">ReceiptZero on Android</a>.</p>
         </div>
+
+        <p>The sections below describe the iPhone app. Where the Android app works differently, the <a href="#android">Android section</a> explains how.</p>
 
         <h2>Information We Collect</h2>
 
@@ -142,8 +145,8 @@
             <li>We do not collect personal identification information.</li>
             <li>We do not track your location.</li>
             <li>We do not access your contacts or messages.</li>
-            <li>We do not include advertising or advertising identifiers.</li>
-            <li>We do not use third-party analytics or tracking SDKs inside the App.</li>
+            <li>The iPhone app includes no advertising and no advertising identifiers. (The Android app's free version shows ads — see <a href="#android">below</a>.)</li>
+            <li>We do not use third-party analytics or tracking SDKs inside the iPhone app.</li>
             <li>We do not upload or transmit your receipts or records to our servers — we operate no servers that receive your data.</li>
         </ul>
 
@@ -166,7 +169,7 @@
         <p>If you enable <strong>iCloud Backup</strong> in Settings, your records are stored in <strong>your own private iCloud account</strong> using Apple's CloudKit, so they can be backed up and restored across your devices. This data resides in your personal iCloud — Soso Family cannot access it. No separate login or account is required; it uses the iCloud account already signed in on your device. Apple's handling of iCloud data is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>. You can turn iCloud Backup off at any time in Settings.</p>
 
         <h2>Third-Party Services</h2>
-        <p>ReceiptZero does not embed advertising networks or third-party analytics. The only third-party services involved are provided by Apple:</p>
+        <p>On iPhone, ReceiptZero does not embed advertising networks or third-party analytics. The only third-party services involved are provided by Apple:</p>
         <ul>
             <li><strong>Apple iCloud (CloudKit):</strong> Used only if you enable iCloud Backup, to store your records in your own private iCloud (see above).</li>
             <li><strong>Apple App Store / In-App Purchases:</strong> Optional Pro upgrades (subscription or one-time purchase) are processed by Apple. Apple handles your payment; we do not receive or store your payment details. Purchase processing is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>.</li>
@@ -181,6 +184,43 @@
 
         <h2>Data Security</h2>
         <p>We implement appropriate technical measures to protect your information, including storing receipt images with file-level data protection on your device. Because your data is stored on your device and in your own iCloud, its security also depends on your device's security settings. We recommend enabling a device passcode and biometric authentication, and you may also enable the App's built-in Face ID lock.</p>
+
+        <h2 id="android">ReceiptZero on Android</h2>
+        <p>The Android app keeps your receipts on your phone just like the iPhone app, but a few things work differently.</p>
+
+        <h3>Your receipts stay on your phone</h3>
+        <ul>
+            <li><strong>No account, no server.</strong> Receipts, receipt photos, the text read from them, and your tax profile are kept in the app's own storage on your phone. Nothing is sent to Soso Family.</li>
+            <li><strong>Scanning:</strong> the camera is opened by Google's ML Kit document scanner (part of Google Play services), which hands the app only the cropped receipt image. The app itself does not request camera or storage permission. Importing a photo uses Android's system photo picker, which shares only the photo you choose.</li>
+            <li><strong>Text recognition (OCR):</strong> done on your phone with Google ML Kit's on-device text recognition. Receipt images and their text are not uploaded. Google's ML Kit may send Google anonymous usage and performance statistics about the scanner and recognizer themselves (not your receipts).</li>
+            <li><strong>Exports:</strong> PDF and CSV files are created on your phone and go only where you send them with the share sheet.</li>
+            <li><strong>App Lock (optional):</strong> uses your phone's fingerprint, face unlock, or screen lock through Android. The app never sees your biometric data.</li>
+        </ul>
+
+        <h3>Ads in the free version</h3>
+        <p>The iPhone app has no ads. The free Android app shows ads from <strong>Google AdMob</strong>: a banner at the bottom of the screen, and now and then a full-screen ad <em>after</em> you finish something (such as saving a receipt). Ads never block a feature.</p>
+        <p>To choose and measure ads, Google's advertising SDK receives:</p>
+        <ul>
+            <li>your phone's <strong>advertising ID</strong>;</li>
+            <li>your <strong>IP address</strong>, from which Google estimates an approximate location;</li>
+            <li><strong>device information</strong> such as model, OS version, and language;</li>
+            <li>how you <strong>interact with ads</strong> (views, taps), plus diagnostic data about ad performance.</li>
+        </ul>
+        <p>This goes to Google, not to us, and is handled under <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google's policy for partner apps</a>. Your receipts and records are never part of it.</p>
+        <ul>
+            <li><strong>Reset or delete your advertising ID:</strong> in your phone's Settings &rsaquo; Privacy &rsaquo; Ads (on some phones, Settings &rsaquo; Google &rsaquo; Ads).</li>
+            <li><strong>EEA, UK, and Switzerland:</strong> before any ad is requested, the app shows Google's consent form so you can choose how your data is used for ads. You can change your answer later from <strong>Settings &rsaquo; Ad Privacy Choices</strong> in the app, which appears wherever the law requires it.</li>
+            <li><strong>Removing ads:</strong> buying Pro (annual subscription or lifetime) removes all ads, along with the export watermark.</li>
+        </ul>
+
+        <h3>Purchases</h3>
+        <p>Pro is sold through <strong>Google Play Billing</strong>. Google processes the payment; we never see your card or payment details. The app only keeps a note on your phone of which purchases you own, so it knows whether to show ads and watermarks. Manage or cancel a subscription in the Google Play Store under Payments &amp; subscriptions.</p>
+
+        <h3>Backup</h3>
+        <p>There is no iCloud on Android. Instead, Android's own backup (to your Google account, if you have it turned on) includes your receipt records and app settings, but <strong>not the receipt photos</strong>. When you move to a new phone with Android's device-to-device transfer, the receipt photos are included too. You can turn Android backup off in your phone's Settings.</p>
+
+        <h3>Deleting your data</h3>
+        <p>Delete any receipt in the app, or uninstall the app (or use Settings &rsaquo; Apps &rsaquo; ReceiptZero &rsaquo; Storage &rsaquo; Clear storage) to remove everything from your phone.</p>
 
         <h2>Children's Privacy</h2>
         <p>Our App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>

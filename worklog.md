@@ -1,3 +1,12 @@
+## 2026-09-27 — ReceiptZero·Milesheet 개인정보처리방침에 Android 섹션 추가
+
+- **요청**: (MarketingTeam 세션) 두 앱 안드로이드판 출시에 맞춰 방침에 Android 섹션 추가 — AdMob·동의(UMP)·Play 결제·온디바이스 OCR·백업, Milesheet 는 위치/자동 주행 감지까지 코드 그대로.
+- **결과**: `apps/receiptzero/legal/privacy-policy.html`, `apps/milesheet/legal/privacy-policy.html` 에 `#android` 섹션 신설, 최종 수정일 2026-09-27.
+  - 근거: 각 앱 `android-store/data-safety.md` + Kotlin 소스(매니페스트 권한, `ads/AdGate`·`Interstitial`, `backup_rules`/`data_extraction_rules`, `tracking/*`).
+  - 공통: 계정·서버 없음, ML Kit 문서 스캐너(앱 자체 카메라 권한 없음)·온디바이스 OCR, AdMob 배너+완료 후 전면(광고 ID·IP 추정 위치·기기 정보·광고 상호작용), 광고 ID 재설정 경로, EEA/UK/CH UMP 동의 + 설정의 Ad Privacy Choices, Play Billing, 백업(클라우드는 DB·설정만, 영수증 사진은 기기 간 이전에만 포함), 앱 잠금.
+  - Milesheet: 자동 감지는 Annual/Lifetime + 사용자가 켤 때만, 활동 인식으로 차량 탑승 감지 → 위치 포그라운드 서비스("Recording a drive" 알림 + Stop), 5분 정지 시 종료, 백그라운드 위치는 별도 단계, **안드로이드는 거리·시작/종료 시각만 저장(좌표·경로 미저장)**, 광고 제거는 연도별 내보내기 포함 모든 구매.
+  - iOS 문구는 유지하되 "no ads / no tracking SDK" 를 **iPhone 한정**으로 명시. Notion 링크 0건.
+
 ## 2026-09-27 — FitnessLog 계정 삭제 페이지 신설 (앱이 약속한 404 URL)
 
 - **요청**: (MarketingTeam 세션) Play 데이터 보안 선언을 채우다 **계정 삭제 URL 이 필수**인데 없었다.

@@ -14,13 +14,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7H69BB95W8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7H69BB95W8');
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root{--primary:#15803d;--primary-dark:#166534;--bg:#f8fafc;--surface:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;
@@ -154,8 +147,9 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       </select>
     </div>
     <label class="check"><input type="checkbox" id="plus" name="plus"><span>I'd buy Plus for US$14.99 once (optional &mdash; it helps us decide)</span></label>
+    <label class="check"><input type="checkbox" id="consent" name="consent" required><span>I agree that SoSo Family may keep my email and country to email me about Tallyleaf's launch. I understand that being on this list may suggest an interest in GLP-1 medicines. (Required)</span></label>
     <button type="submit" id="btn">Join the list</button>
-    <p class="fine">We'll email you when it launches. We only ask for your email, country and the checkbox above &mdash; no health information. We don't share it or sell it. See the <a href="legal/privacy-policy.html#website">privacy policy</a>.</p>
+    <p class="fine">We'll email you when it launches. We only ask for your email, country and the optional Plus answer &mdash; no health information. We don't sell it or use it for ads, and this page has no analytics or ad trackers. You can withdraw at any time: reply "unsubscribe" to any email or write to sosofamily.ca@gmail.com, and we'll delete your entry. See the <a href="legal/privacy-policy.html#website">privacy policy</a>.</p>
   </form>
   <div class="msg ok" id="ok" role="status">Thanks &mdash; you're on the list. We'll email you when Tallyleaf launches.</div>
   <div class="msg bad" id="bad" role="alert">That didn't send. Please try again, or email sosofamily.ca@gmail.com.</div>
@@ -183,6 +177,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
   var email = document.getElementById('email');
   var country = document.getElementById('country');
   var plus = document.getElementById('plus');
+  var consent = document.getElementById('consent');
   var btn = document.getElementById('btn');
   var ok = document.getElementById('ok');
   var bad = document.getElementById('bad');
@@ -198,6 +193,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     var value = (email.value || '').trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) { email.focus(); return; }
     if (!country.value) { country.focus(); return; }
+    if (!consent.checked) { consent.focus(); consent.reportValidity && consent.reportValidity(); return; }
     var wouldBuy = plus.checked ? 'yes' : 'no';
 
     var label = btn.textContent;
@@ -215,14 +211,12 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
         message: 'Tallyleaf waitlist signup\n\nEmail: ' + value +
                  '\nCountry: ' + country.value +
                  '\nWould buy Plus: ' + wouldBuy +
+                 '\nConsent: yes (launch email; GLP-1 interest notice shown)' +
                  '\nSource: ' + source +
                  '\nMedium: ' + (params.get('utm_medium') || '—') +
                  '\nCampaign: ' + (params.get('utm_campaign') || '—') +
                  '\nTime: ' + now.toISOString()
       });
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { method: 'waitlist', app: 'tallyleaf', utm_source: source, country: country.value, would_buy_plus: wouldBuy });
-      }
       form.reset();
       form.style.display = 'none';
       ok.classList.add('show');

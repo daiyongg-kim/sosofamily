@@ -1,3 +1,8 @@
+## 2026-09-27 — FitnessLog 방침: 안드로이드 반영
+
+- **요청**: iOS 앱 안드로이드 포팅 1단계(FitnessLog 안드로이드 = Google 로그인 + Supabase 동기화 + AdMob)
+- **결과**: 방침에 Apple 로그인 iPhone 한정, 로그인 선택 사항, 안드로이드 광고 ID 재설정 방법·EEA/UK/CH 동의 양식·Play 결제 추가, 최종 수정일 2026-09-27. 계정 삭제 페이지(`apps/fitnesslog/account-deletion.html`)는 서버 `delete_user_data` 함수 존재 확인 전이라 게시 보류
+
 ## 2026-09-27 — Scanory 최소 iOS 표기 26.2 → 17
 
 - **요청**: 빠진 것 점검

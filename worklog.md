@@ -1,3 +1,8 @@
+## 2026-09-27 — VoiceNote+ 방침: 안드로이드 절
+
+- **요청**: iOS 앱 안드로이드 포팅 1단계(VoiceNote+ 안드로이드 = 무계정·온디바이스 Whisper·AdMob)
+- **결과**: 방침에 "VoiceNote+ on Android" 절(계정 없음·서버 저장 없음, 온디바이스 Whisper·Hugging Face 모델 다운로드, 배너+전면·광고 ID·EEA 동의·Play 결제, 삭제 방법), 최종 수정일 2026-09-27
+
 ## 2026-09-27 — FitnessLog 방침: 안드로이드 반영
 
 - **요청**: iOS 앱 안드로이드 포팅 1단계(FitnessLog 안드로이드 = Google 로그인 + Supabase 동기화 + AdMob)

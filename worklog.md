@@ -1,3 +1,7 @@
+## 2026-10-07 — 홈 Play 링크 3개 추가 + 블로그 푸터 게임 2개
+- **요청**: sosofamily.ca 에 빠진 앱 있는지 점검 → 수정
+- **결과**: index.html VoiceNote+·FitnessLog·ReceiptZero 에 Google Play 버튼(referrer utm_source=sosofamily&utm_medium=web) + JSON-LD operatingSystem "iOS, Android". 블로그 푸터(MarketingTeam templates/blog-post.html)에 Arrowly·Hordeling 추가 후 18편 재빌드.
+
 ## 2026-09-27 — ReceiptZero·Milesheet 개인정보처리방침에 Android 섹션 추가
 
 - **요청**: (MarketingTeam 세션) 두 앱 안드로이드판 출시에 맞춰 방침에 Android 섹션 추가 — AdMob·동의(UMP)·Play 결제·온디바이스 OCR·백업, Milesheet 는 위치/자동 주행 감지까지 코드 그대로.

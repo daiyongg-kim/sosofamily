@@ -2,6 +2,10 @@
 - **요청**: sosofamily.ca 에 빠진 앱 있는지 점검 → 수정
 - **결과**: index.html VoiceNote+·FitnessLog·ReceiptZero 에 Google Play 버튼(referrer utm_source=sosofamily&utm_medium=web) + JSON-LD operatingSystem "iOS, Android". 블로그 푸터(MarketingTeam templates/blog-post.html)에 Arrowly·Hordeling 추가 후 18편 재빌드.
 
+## 2026-10-19 — Tallyleaf 개인정보처리방침에 안드로이드 섹션
+- **요청**: Tallyleaf 안드로이드 출시 준비("안드로이드로 한번 올리자").
+- **결과**: `apps/tallyleaf/legal/privacy-policy.html` — 요약에 Android 항목, `#android` 섹션(백업 꺼짐·Health Connect 미사용·알림·앱 잠금 FLAG_SECURE·AdMob 배너/전면 규칙·npa·UMP·Plus=Play 결제로 광고 제거), "no ads"는 iPhone 한정으로. 앱 코드(Ads.kt·AppLock.kt·Manifest)와 대조.
+
 ## 2026-09-27 — ReceiptZero·Milesheet 개인정보처리방침에 Android 섹션 추가
 
 - **요청**: (MarketingTeam 세션) 두 앱 안드로이드판 출시에 맞춰 방침에 Android 섹션 추가 — AdMob·동의(UMP)·Play 결제·온디바이스 OCR·백업, Milesheet 는 위치/자동 주행 감지까지 코드 그대로.

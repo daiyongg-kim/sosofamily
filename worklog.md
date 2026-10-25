@@ -1,3 +1,7 @@
+## 2026-10-25 — 블로그 발행: Are Scanned Receipts Valid for the IRS and CRA?
+- **요청**: ReceiptZero 대기 글 발행(G2 승인)
+- **결과**: `blog/are-scanned-receipts-valid-for-taxes-irs-cra/` 신규, 블로그 목록·sitemap 갱신. 같이 빌드된 기존 글 2편 정정 반영(how-to-organize-receipts "No Subscription"→"No Ads", paperless-ngx 글 ReceiptZero 무료판 제한 명시). 소스 MarketingTeam blogdesk `2026-10-19-receiptzero`.
+
 ## 2026-10-07 — 홈 Play 링크 3개 추가 + 블로그 푸터 게임 2개
 - **요청**: sosofamily.ca 에 빠진 앱 있는지 점검 → 수정
 - **결과**: index.html VoiceNote+·FitnessLog·ReceiptZero 에 Google Play 버튼(referrer utm_source=sosofamily&utm_medium=web) + JSON-LD operatingSystem "iOS, Android". 블로그 푸터(MarketingTeam templates/blog-post.html)에 Arrowly·Hordeling 추가 후 18편 재빌드.

@@ -1,3 +1,7 @@
+## 2026-10-25 — Monette 개인정보처리방침에 Android 섹션
+- **요청**: Monette 안드로이드 출시 준비
+- **결과**: `apps/monette/legal/privacy-policy.html` — 소개를 iPhone·Android 로, `#android` 섹션(백업: 사용자 Google 계정 백업·기기 이전 포함, E2E 가능할 때만 클라우드 / 사진 선택기·위치 메타데이터 제거 / AdMob 배너+하루 1회 전면·광고 ID·맞춤 광고 가능 / UMP 동의 / Remove Ads Google Play). Last Updated 2026-10-25.
+
 ## 2026-10-25 — 블로그 발행: Are Scanned Receipts Valid for the IRS and CRA?
 - **요청**: ReceiptZero 대기 글 발행(G2 승인)
 - **결과**: `blog/are-scanned-receipts-valid-for-taxes-irs-cra/` 신규, 블로그 목록·sitemap 갱신. 같이 빌드된 기존 글 2편 정정 반영(how-to-organize-receipts "No Subscription"→"No Ads", paperless-ngx 글 ReceiptZero 무료판 제한 명시). 소스 MarketingTeam blogdesk `2026-10-19-receiptzero`.

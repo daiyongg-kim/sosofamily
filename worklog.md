@@ -1,3 +1,7 @@
+## 2026-10-31 — Pagevox 개인정보처리방침에 Android 섹션
+- **요청**: Pagevox 안드로이드 출시 진행
+- **결과**: `apps/pagevox/legal/privacy-policy.html` — 소개 iPhone·Android, `#android` 섹션(저장·백업 범위·오프라인 TTS·Gutenberg 접속·AdMob 서재 배너/광고 ID/UMP·Remove Ads Google Play·권한). Last Updated 2026-10-31.
+
 ## 2026-10-25 — Monette 개인정보처리방침에 Android 섹션
 - **요청**: Monette 안드로이드 출시 준비
 - **결과**: `apps/monette/legal/privacy-policy.html` — 소개를 iPhone·Android 로, `#android` 섹션(백업: 사용자 Google 계정 백업·기기 이전 포함, E2E 가능할 때만 클라우드 / 사진 선택기·위치 메타데이터 제거 / AdMob 배너+하루 1회 전면·광고 ID·맞춤 광고 가능 / UMP 동의 / Remove Ads Google Play). Last Updated 2026-10-25.

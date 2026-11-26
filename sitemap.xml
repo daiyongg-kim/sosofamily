@@ -55,6 +55,11 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://sosofamily.ca/apps/receiptzero/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://sosofamily.ca/apps/scanory/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
